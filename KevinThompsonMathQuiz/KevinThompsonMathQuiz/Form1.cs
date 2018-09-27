@@ -29,6 +29,7 @@ namespace KevinThompsonMathQuiz
         public Form1()
         {
             InitializeComponent();
+            this.todaysDateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
         }
 
         public void StartTheQuiz()
