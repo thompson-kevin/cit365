@@ -78,11 +78,11 @@ namespace MegaDesk_3_KevinThompson
 
         private void ValidateHeightInput(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
             {
                 lblInvalidHeight.Visible = false;
             }
-            else
+            else if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 lblInvalidHeight.Visible = true;
             }
@@ -104,7 +104,8 @@ namespace MegaDesk_3_KevinThompson
             }
             else if (possibleNewWidth == -1)
             {
-                // error
+                lblInvalidWidth.Visible = true;
+                lblInvalidWidthBetween.Visible = true;
             }
         }
 
