@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaDesk_3_KevinThompson
 {
-    class Desk
+    public class Desk
     {
         public int width, height, depth, drawers;
         //public int drawers;
@@ -59,7 +59,27 @@ namespace MegaDesk_3_KevinThompson
 
         public bool ValidateDepth(int depth)
         {
-            return height >= 12 && height <= 48;
+            return depth >= 12 && depth <= 48;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(",",
+                this.width,
+                this.height,
+                this.depth,
+                this.drawers,
+                this.material);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

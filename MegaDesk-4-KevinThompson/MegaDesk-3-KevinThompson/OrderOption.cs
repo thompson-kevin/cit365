@@ -1,10 +1,10 @@
 ﻿namespace MegaDesk_3_KevinThompson
 {
-    enum OrderOption
+    public enum ShippingOption
     {
-        ThreeDay = 3,
-        FiveDay = 5,
-        SevenDay = 7,
-        StandardShipping = 14
+        Three = 3,
+        Five = 5,
+        Seven = 7,
+        Standard = 14
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MegaDesk_3_KevinThompson
 {
-     enum Material
+     public enum Material
     {
         Oak,
         Lamenant,

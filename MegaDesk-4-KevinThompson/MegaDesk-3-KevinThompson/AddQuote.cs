@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MegaDesk_4_KevinThompson;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +22,7 @@ namespace MegaDesk_3_KevinThompson
             InitializeComponent();
             comboBoxMaterials.DataSource = Enum.GetValues(typeof(Material));
             comboBoxDrawers.DataSource = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7};
-            comboBoxShippingOption.DataSource = Enum.GetValues(typeof(OrderOption));
+            comboBoxShippingOption.DataSource = Enum.GetValues(typeof(ShippingOption));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -31,18 +34,32 @@ namespace MegaDesk_3_KevinThompson
 
         private void btnSaveDesk_Click(object sender, EventArgs e)
         {
-            Enum.TryParse<Material>(comboBoxMaterials.SelectedValue.ToString(), out Material selectedMaterial);
-            Enum.TryParse<OrderOption>(comboBoxMaterials.SelectedValue.ToString(), out OrderOption shippingOption);
-            int.TryParse(comboBoxDrawers.SelectedValue.ToString(), out int drawerCount);
-            newDesk.material = selectedMaterial;
-            newDesk.drawers = drawerCount;
+            if ((newDesk.ValidateIntInput(tbHeight.Text) != -1) && ValidateNameInput() && ValidateDepth() && ValidateHeightInput() && ValidateWidth())
+            {
+                Enum.TryParse<Material>(comboBoxMaterials.SelectedValue.ToString(), out Material selectedMaterial);
+                Enum.TryParse<ShippingOption>(comboBoxShippingOption.SelectedValue.ToString(), out ShippingOption shippingOption);
+                int.TryParse(comboBoxDrawers.SelectedValue.ToString(), out int drawerCount);
+                newDesk.height = newDesk.ValidateIntInput(tbHeight.Text);
+                newDesk.material = selectedMaterial;
+                newDesk.drawers = drawerCount;
 
-            DeskQuote deskQuote = new DeskQuote();
-            deskQuote.name = tbName.Text;
-            deskQuote.orderOption = shippingOption;
-            deskQuote.desk = newDesk;
-            deskQuote.price = deskQuote.CalcPrice();
-            deskQuote.quoteDate = DateTime.Now;
+                DeskQuote deskQuote = new DeskQuote
+                {
+                    name = tbName.Text,
+                    shippingOption = shippingOption,
+                    desk = newDesk
+                };
+                deskQuote.price = deskQuote.CalcPrice();
+                deskQuote.quoteDate = DateTime.Now;
+                
+                FileHelper.ToCsv(deskQuote);
+
+                DisplayQuote displayQuote = new DisplayQuote();
+                displayQuote.Tag = this;
+                displayQuote.InitializeFields(deskQuote);
+                displayQuote.Show();
+                Close();
+            }
         }
 
         private void comboBoxDrawers_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,36 +75,54 @@ namespace MegaDesk_3_KevinThompson
 
         private void ValidateDepth(object sender, EventArgs e)
         {
-            int possibleNewWidth = newDesk.ValidateIntInput(tbDepth.Text);
-            if (newDesk.ValidateWidth(possibleNewWidth) && possibleNewWidth != -1)
+            int possibleNewDepth = newDesk.ValidateIntInput(tbDepth.Text);
+            if (newDesk.ValidateDepth(possibleNewDepth) && possibleNewDepth != -1)
             {
-                newDesk.depth = possibleNewWidth;
+                newDesk.depth = possibleNewDepth;
                 lblInvalidDepth.Visible = false;
                 lblInvalidDepthBetween.Visible = false;
             }
-            else if (!newDesk.ValidateWidth(possibleNewWidth) && possibleNewWidth != -1)
+            else if (!newDesk.ValidateDepth(possibleNewDepth) && possibleNewDepth != -1)
             {
                 lblInvalidDepth.Visible = true;
                 lblInvalidDepthBetween.Visible = true;
             }
-            else if (possibleNewWidth == -1)
+            else if (possibleNewDepth == -1)
             {
                 // error
             }
         }
 
+        private Boolean ValidateDepth()
+        {
+            int possibleNewDepth = newDesk.ValidateIntInput(tbDepth.Text);
+            if (newDesk.ValidateDepth(possibleNewDepth) && possibleNewDepth != -1)
+            {
+                newDesk.depth = possibleNewDepth;
+                lblInvalidDepth.Visible = false;
+                lblInvalidDepthBetween.Visible = false;
+                return true;
+            }
+            else
+            {
+                lblInvalidDepth.Visible = true;
+                lblInvalidDepthBetween.Visible = true;
+            }
+            return false;
+        }
+
         private void ValidateHeight(object sender, KeyPressEventArgs e)
         {
-            int possibleNewHeight = newDesk.ValidateIntInput(tbHeight.Text);
-            if (possibleNewHeight != -1)
-            {
-                newDesk.height = possibleNewHeight;
-                lblInvalidHeight.Visible = false;
-            }
-            else if (possibleNewHeight == -1)
-            {
-                lblInvalidHeight.Visible = true;
-            }
+            //int possibleNewHeight = newDesk.ValidateIntInput(tbHeight.Text);
+            //if (possibleNewHeight != -1)
+            //{
+            //    newDesk.height = possibleNewHeight;
+            //    lblInvalidHeight.Visible = false;
+            //}
+            //else if (possibleNewHeight == -1)
+            //{
+            //    lblInvalidHeight.Visible = true;
+            //}
         }
 
         private void ValidateHeightInput(object sender, KeyPressEventArgs e)
@@ -100,6 +135,11 @@ namespace MegaDesk_3_KevinThompson
             {
                 lblInvalidHeight.Visible = true;
             }
+        }
+
+        private Boolean ValidateHeightInput()
+        {
+            return !lblInvalidHeight.Visible;
         }
 
         private void ValidateWidth(object sender, CancelEventArgs e)
@@ -120,6 +160,25 @@ namespace MegaDesk_3_KevinThompson
             {
                 lblInvalidWidth.Visible = true;
                 lblInvalidWidthBetween.Visible = true;
+            }
+        }
+
+        private Boolean ValidateWidth()
+        {
+            return !lblInvalidWidth.Visible;
+        }
+
+        private Boolean ValidateNameInput()
+        {
+            if (tbName.Text.Length > 0)
+            {
+                blbInvalidNameAndShipping.Visible = false;
+                return true;
+            }
+            else
+            {
+                blbInvalidNameAndShipping.Visible = true;
+                return false;
             }
         }
 
@@ -144,6 +203,16 @@ namespace MegaDesk_3_KevinThompson
         }
 
         private void lblInvalidWidth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blbInvalidNameAndShipping_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxShippingOption_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

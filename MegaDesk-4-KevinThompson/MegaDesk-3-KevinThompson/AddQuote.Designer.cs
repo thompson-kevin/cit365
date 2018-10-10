@@ -51,6 +51,7 @@
             this.comboBoxShippingOption = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lineSeperator = new System.Windows.Forms.Label();
+            this.blbInvalidNameAndShipping = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 167);
+            this.label2.Location = new System.Drawing.Point(10, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 1;
@@ -77,7 +78,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 202);
+            this.label3.Location = new System.Drawing.Point(10, 228);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 20);
             this.label3.TabIndex = 2;
@@ -87,7 +88,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 240);
+            this.label4.Location = new System.Drawing.Point(10, 266);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 20);
             this.label4.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 275);
+            this.label5.Location = new System.Drawing.Point(10, 301);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 4;
@@ -107,7 +108,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 313);
+            this.label6.Location = new System.Drawing.Point(10, 339);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 20);
             this.label6.TabIndex = 5;
@@ -115,9 +116,10 @@
             // 
             // comboBoxDrawers
             // 
+            this.comboBoxDrawers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDrawers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDrawers.FormattingEnabled = true;
-            this.comboBoxDrawers.Location = new System.Drawing.Point(144, 272);
+            this.comboBoxDrawers.Location = new System.Drawing.Point(138, 298);
             this.comboBoxDrawers.Name = "comboBoxDrawers";
             this.comboBoxDrawers.Size = new System.Drawing.Size(121, 32);
             this.comboBoxDrawers.TabIndex = 6;
@@ -125,9 +127,10 @@
             // 
             // comboBoxMaterials
             // 
+            this.comboBoxMaterials.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaterials.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxMaterials.FormattingEnabled = true;
-            this.comboBoxMaterials.Location = new System.Drawing.Point(144, 310);
+            this.comboBoxMaterials.Location = new System.Drawing.Point(138, 336);
             this.comboBoxMaterials.Name = "comboBoxMaterials";
             this.comboBoxMaterials.Size = new System.Drawing.Size(121, 32);
             this.comboBoxMaterials.TabIndex = 7;
@@ -136,10 +139,10 @@
             // btnSaveDesk
             // 
             this.btnSaveDesk.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveDesk.Location = new System.Drawing.Point(18, 361);
+            this.btnSaveDesk.Location = new System.Drawing.Point(12, 387);
             this.btnSaveDesk.Name = "btnSaveDesk";
             this.btnSaveDesk.Size = new System.Drawing.Size(126, 38);
-            this.btnSaveDesk.TabIndex = 11;
+            this.btnSaveDesk.TabIndex = 8;
             this.btnSaveDesk.Text = "Save Desk";
             this.btnSaveDesk.UseVisualStyleBackColor = true;
             this.btnSaveDesk.Click += new System.EventHandler(this.btnSaveDesk_Click);
@@ -147,7 +150,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(217, 361);
+            this.btnCancel.Location = new System.Drawing.Point(357, 387);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(126, 38);
             this.btnCancel.TabIndex = 12;
@@ -160,7 +163,7 @@
             this.lblInvalidHeight.AutoSize = true;
             this.lblInvalidHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidHeight.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidHeight.Location = new System.Drawing.Point(249, 167);
+            this.lblInvalidHeight.Location = new System.Drawing.Point(243, 193);
             this.lblInvalidHeight.Name = "lblInvalidHeight";
             this.lblInvalidHeight.Size = new System.Drawing.Size(179, 20);
             this.lblInvalidHeight.TabIndex = 16;
@@ -173,7 +176,7 @@
             this.lblInvalidWidth.AutoSize = true;
             this.lblInvalidWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidWidth.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidWidth.Location = new System.Drawing.Point(250, 202);
+            this.lblInvalidWidth.Location = new System.Drawing.Point(244, 228);
             this.lblInvalidWidth.Name = "lblInvalidWidth";
             this.lblInvalidWidth.Size = new System.Drawing.Size(119, 13);
             this.lblInvalidWidth.TabIndex = 17;
@@ -186,7 +189,7 @@
             this.lblInvalidWidthBetween.AutoSize = true;
             this.lblInvalidWidthBetween.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidWidthBetween.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidWidthBetween.Location = new System.Drawing.Point(250, 215);
+            this.lblInvalidWidthBetween.Location = new System.Drawing.Point(244, 241);
             this.lblInvalidWidthBetween.Name = "lblInvalidWidthBetween";
             this.lblInvalidWidthBetween.Size = new System.Drawing.Size(187, 13);
             this.lblInvalidWidthBetween.TabIndex = 19;
@@ -199,7 +202,7 @@
             this.lblInvalidDepthBetween.AutoSize = true;
             this.lblInvalidDepthBetween.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidDepthBetween.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidDepthBetween.Location = new System.Drawing.Point(250, 250);
+            this.lblInvalidDepthBetween.Location = new System.Drawing.Point(244, 276);
             this.lblInvalidDepthBetween.Name = "lblInvalidDepthBetween";
             this.lblInvalidDepthBetween.Size = new System.Drawing.Size(187, 13);
             this.lblInvalidDepthBetween.TabIndex = 21;
@@ -212,7 +215,7 @@
             this.lblInvalidDepth.AutoSize = true;
             this.lblInvalidDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidDepth.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidDepth.Location = new System.Drawing.Point(250, 237);
+            this.lblInvalidDepth.Location = new System.Drawing.Point(244, 263);
             this.lblInvalidDepth.Name = "lblInvalidDepth";
             this.lblInvalidDepth.Size = new System.Drawing.Size(120, 13);
             this.lblInvalidDepth.TabIndex = 20;
@@ -223,42 +226,42 @@
             // tbHeight
             // 
             this.tbHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHeight.Location = new System.Drawing.Point(144, 167);
+            this.tbHeight.Location = new System.Drawing.Point(138, 193);
             this.tbHeight.Name = "tbHeight";
             this.tbHeight.Size = new System.Drawing.Size(100, 29);
-            this.tbHeight.TabIndex = 22;
+            this.tbHeight.TabIndex = 2;
             this.tbHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateHeightInput);
             // 
             // tbWidth
             // 
             this.tbWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbWidth.Location = new System.Drawing.Point(144, 202);
+            this.tbWidth.Location = new System.Drawing.Point(138, 228);
             this.tbWidth.Name = "tbWidth";
             this.tbWidth.Size = new System.Drawing.Size(100, 29);
-            this.tbWidth.TabIndex = 23;
+            this.tbWidth.TabIndex = 3;
             this.tbWidth.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateWidth);
             // 
             // tbDepth
             // 
             this.tbDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDepth.Location = new System.Drawing.Point(144, 237);
+            this.tbDepth.Location = new System.Drawing.Point(138, 263);
             this.tbDepth.Name = "tbDepth";
             this.tbDepth.Size = new System.Drawing.Size(100, 29);
-            this.tbDepth.TabIndex = 24;
+            this.tbDepth.TabIndex = 4;
             // 
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(144, 53);
+            this.tbName.Location = new System.Drawing.Point(138, 79);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(242, 29);
-            this.tbName.TabIndex = 26;
+            this.tbName.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 53);
+            this.label7.Location = new System.Drawing.Point(10, 79);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 20);
             this.label7.TabIndex = 25;
@@ -266,36 +269,52 @@
             // 
             // comboBoxShippingOption
             // 
+            this.comboBoxShippingOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxShippingOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxShippingOption.FormattingEnabled = true;
-            this.comboBoxShippingOption.Location = new System.Drawing.Point(144, 88);
+            this.comboBoxShippingOption.Location = new System.Drawing.Point(138, 114);
             this.comboBoxShippingOption.Name = "comboBoxShippingOption";
             this.comboBoxShippingOption.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxShippingOption.TabIndex = 28;
+            this.comboBoxShippingOption.TabIndex = 1;
+            this.comboBoxShippingOption.SelectedIndexChanged += new System.EventHandler(this.comboBoxShippingOption_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 95);
+            this.label8.Location = new System.Drawing.Point(10, 121);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 20);
+            this.label8.Size = new System.Drawing.Size(111, 20);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Shipping Option";
+            this.label8.Text = "Shipping Days";
             // 
             // lineSeperator
             // 
             this.lineSeperator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lineSeperator.Location = new System.Drawing.Point(20, 139);
+            this.lineSeperator.Location = new System.Drawing.Point(14, 165);
             this.lineSeperator.Name = "lineSeperator";
-            this.lineSeperator.Size = new System.Drawing.Size(415, 2);
+            this.lineSeperator.Size = new System.Drawing.Size(472, 2);
             this.lineSeperator.TabIndex = 29;
+            // 
+            // blbInvalidNameAndShipping
+            // 
+            this.blbInvalidNameAndShipping.AutoSize = true;
+            this.blbInvalidNameAndShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blbInvalidNameAndShipping.ForeColor = System.Drawing.Color.Red;
+            this.blbInvalidNameAndShipping.Location = new System.Drawing.Point(386, 79);
+            this.blbInvalidNameAndShipping.Name = "blbInvalidNameAndShipping";
+            this.blbInvalidNameAndShipping.Size = new System.Drawing.Size(102, 20);
+            this.blbInvalidNameAndShipping.TabIndex = 30;
+            this.blbInvalidNameAndShipping.Text = "*Insert Name";
+            this.blbInvalidNameAndShipping.Visible = false;
+            this.blbInvalidNameAndShipping.Click += new System.EventHandler(this.blbInvalidNameAndShipping_Click);
             // 
             // AddQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 428);
+            this.ClientSize = new System.Drawing.Size(495, 446);
+            this.Controls.Add(this.blbInvalidNameAndShipping);
             this.Controls.Add(this.lineSeperator);
             this.Controls.Add(this.comboBoxShippingOption);
             this.Controls.Add(this.label8);
@@ -351,5 +370,6 @@
         private System.Windows.Forms.ComboBox comboBoxShippingOption;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lineSeperator;
+        private System.Windows.Forms.Label blbInvalidNameAndShipping;
     }
 }
