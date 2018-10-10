@@ -17,6 +17,9 @@ namespace MegaDesk_3_KevinThompson
         public AddQuote()
         {
             InitializeComponent();
+            comboBoxMaterials.DataSource = Enum.GetValues(typeof(Material));
+            comboBoxDrawers.DataSource = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7};
+            comboBoxShippingOption.DataSource = Enum.GetValues(typeof(OrderOption));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -28,7 +31,18 @@ namespace MegaDesk_3_KevinThompson
 
         private void btnSaveDesk_Click(object sender, EventArgs e)
         {
+            Enum.TryParse<Material>(comboBoxMaterials.SelectedValue.ToString(), out Material selectedMaterial);
+            Enum.TryParse<OrderOption>(comboBoxMaterials.SelectedValue.ToString(), out OrderOption shippingOption);
+            int.TryParse(comboBoxDrawers.SelectedValue.ToString(), out int drawerCount);
+            newDesk.material = selectedMaterial;
+            newDesk.drawers = drawerCount;
 
+            DeskQuote deskQuote = new DeskQuote();
+            deskQuote.name = tbName.Text;
+            deskQuote.orderOption = shippingOption;
+            deskQuote.desk = newDesk;
+            deskQuote.price = deskQuote.CalcPrice();
+            deskQuote.quoteDate = DateTime.Now;
         }
 
         private void comboBoxDrawers_SelectedIndexChanged(object sender, EventArgs e)

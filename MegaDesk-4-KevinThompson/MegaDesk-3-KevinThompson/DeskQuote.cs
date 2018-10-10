@@ -19,7 +19,7 @@ namespace MegaDesk_3_KevinThompson
             double basePrice = 200;
             if (desk != null)
             {
-                double surfaceArea = CalcSurfaceArea(desk.height, desk.width, desk.depth);
+                double surfaceArea = CalcSurfaceArea(desk.width, desk.depth);
                 double drawerCost = CalcDrawerCost(desk.drawers);
                 double materialCost = CalcMaterialCost(desk.material);
                 double rushOrderCost = 0;
@@ -32,9 +32,9 @@ namespace MegaDesk_3_KevinThompson
             return -1;
         }
 
-        private double CalcSurfaceArea(double height, double width, double depth)
+        private double CalcSurfaceArea(double width, double depth)
         {
-            return height * width * depth;
+            return width * depth;
         }
 
         private double CalcDrawerCost(int numberOfDrawers)
