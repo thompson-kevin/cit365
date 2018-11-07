@@ -1,0 +1,104 @@
+﻿@page
+@model MyScriptureJournal.Pages.Scriptures.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Add New Scripture</a>
+</p>
+
+<form>
+    <div style="display: flex; padding-top: 32px;">
+        <div style="flex: 1;">
+            Book:
+        </div>
+        <div style="flex: 16;">
+            <input type="text" name="SearchStringBook">
+        </div>
+    </div>
+    <div style="display: flex;  padding-top: 16px;">
+        <div style="flex: 1;">
+            Keyword:
+        </div>
+        <div style="flex: 16;">
+            <input type="text" name="SearchStringNote">
+        </div>
+    </div>
+    <div style="display: flex; padding-top: 16px; padding-bottom: 32px;">
+        <div style="flex: 1;"></div>
+        <div style="flex: 16;">
+            <span style="padding-left: 98px;"><input type="submit" value="Filter" /></span>
+        </div>
+    </div>
+
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort">
+                    @Html.DisplayNameFor(model => model.Scripture[0].Book)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Verse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Notes)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Scripture[0].AddedDate)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Scripture)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Verse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddedDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.Scripture.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Scripture.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Scripture.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Scripture.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
