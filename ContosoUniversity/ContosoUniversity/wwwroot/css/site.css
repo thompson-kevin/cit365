@@ -3,6 +3,8 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Merriweather', serif !important;
+    background-color: lightcyan;
 }
 
 /* Wrapping element */
@@ -34,4 +36,22 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+.navbar {
+    background-color: indianred !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgb(51, 51, 51);
+}
+
+.navbar-inverse .navbar-brand {
+    color: rgb(51, 51, 51);
+}
+
+.navbar-inverse {
+    border-color: indianred !important;
+    filter: brightness(110%);
+    color: rgb(51, 51, 51);
 }

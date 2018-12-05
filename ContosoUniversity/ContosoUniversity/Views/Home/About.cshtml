@@ -6,25 +6,35 @@
 
 <h2>Student Body Statistics</h2>
 
-<table>
-    <tr>
-        <th>
-            Enrollment Date
-        </th>
-        <th>
-            Students
-        </th>
-    </tr>
+<div class="row">
+    <div class="col-md-6">
+        <table>
+            <tr>
+                <th>
+                    Enrollment Date
+                </th>
+                <th style="padding-left: 8px;">
+                    Students
+                </th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
-            </td>
-            <td>
-                @item.StudentCount
-            </td>
-        </tr>
-    }
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td style="padding-left: 8px;">
+                        @item.StudentCount
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h4>Development of this site have been attributed to:</h4>
+        <div>Kevin Thompson</div>
+        <div>706-251-4979</div>
+    </div>
+</div>
+
